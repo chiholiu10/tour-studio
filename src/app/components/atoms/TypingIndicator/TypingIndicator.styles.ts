@@ -3,17 +3,17 @@ import styled, { keyframes } from "styled-components";
 
 const typingAnimation = keyframes`
   0% {
-    transform: scale(1);
+    transform: scale(0.7);
   }
   100% {
-    transform: scale(1.5);
+    transform: scale(1);
   }
 `;
 
 export const TypingIndicatorComponent = styled.div<{ $userType: string }>`
   display: flex;
   align-items: center;
-  margin: 10px 0;
+  margin: auto 0 1.25rem;
   justify-content: ${(props) =>
     props.$userType === "user" ? "flex-start" : "flex-end"};
 `;
