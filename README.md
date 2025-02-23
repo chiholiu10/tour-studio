@@ -16,48 +16,21 @@ This project is built with the following technologies:
 
 Make sure you have [Node.js](https://nodejs.org/) installed on your machine. You can check your version with:
 
-```bash
-node -v
+Run this commandline
 
-Installation
-Clone the repository:
+- node -v
 
-bash
-Copy
-Edit
-git clone <repository-url>
-cd chatbot
-Install the dependencies:
+## Installation
 
-bash
-Copy
-Edit
-npm install
-Scripts
-You can run the following commands in the terminal:
+## 1.Clone the repository
 
-Development: Start the development server with TurboPack
+- git clone https://github.com/chiholiu10/chatbot.git
+- cd chatbot
 
-bash
-Copy
-Edit
-npm run dev
-Build: Create an optimized production build
+## 2.Install the dependencies
 
-bash
-Copy
-Edit
-npm run build
-Start: Start the production server
+- npm install
 
-bash
-Copy
-Edit
-npm run start
-Lint: Run ESLint to check for code quality
+## 3.Development: Start the development server with TurboPack
 
-bash
-Copy
-Edit
-npm run lint
-```
+- npm run dev
