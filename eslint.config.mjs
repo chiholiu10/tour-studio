@@ -17,9 +17,9 @@ const eslintConfig = [
       "@typescript-eslint/no-unused-vars": [
         "error",
         {
-          args: "after-used", // Warn only about unused arguments after the last used argument
-          vars: "all", // Warn about all unused variables
-          ignoreRestSiblings: true, // Ignore unused rest siblings in destructuring
+          args: "after-used",
+          vars: "all",
+          ignoreRestSiblings: true,
         },
       ],
       "react/jsx-no-undef": "error",
