@@ -14,7 +14,6 @@ export const TypingIndicatorComponent = styled.div<{ $userType: string }>`
   display: flex;
   align-items: center;
   margin: 10px 0;
-  align-items: end;
   justify-content: ${(props) =>
     props.$userType === "user" ? "flex-start" : "flex-end"};
 `;
@@ -24,7 +23,7 @@ export const Bubble = styled.div`
   height: 0.438rem;
   margin: 0 0.3rem;
   border-radius: ${theme.borderRadius.xxl};
-  background-color: ${theme.colors.black.dark};
+  background-color: ${theme.colors.black.darkerLight};
   animation: ${typingAnimation} 0.8s infinite alternate;
 
   &:nth-of-type(1) {

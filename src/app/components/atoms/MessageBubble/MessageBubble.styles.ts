@@ -16,8 +16,7 @@ export const MessageBubbleComponent = styled.div`
 
   &.align-end {
     background-color: ${theme.colors.blue};
-    color: ${theme.colors.black.main};
-    font-weight: ${theme.typoGraphy.fontWeights.semiBold};
+    color: ${theme.colors.black.dark};
     margin-right: ${theme.spacing.sm};
     border-bottom-left-radius: ${theme.typoGraphy.fontSizes.sm};
     border-bottom-right-radius: 0;
