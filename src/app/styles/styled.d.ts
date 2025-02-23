@@ -19,10 +19,11 @@ type Colors = {
   };
   black: ColorVariant & {
     // Additional shades for black
+    transparentBlack?: Color;
     lightGrey?: Color;
-    lightExtra?: Color;
-    extraDark?: Color;
-    ultraLightDark?: Color;
+    ultraLight?: Color;
+    lightMedium?: Color;
+    darkerLight?: Color;
   };
   blue: Color;
   red: Color;
@@ -32,6 +33,7 @@ type TypoGraphy = {
   fontWeights: {
     regular?: string | number;
     normal?: string | number;
+    medium?: string | number;
     semiBold?: string | number;
     bold?: string | number;
     extraBold?: string | number;
