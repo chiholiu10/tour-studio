@@ -15,7 +15,7 @@ export const TypingIndicatorComponent = styled.div<{ $userType: string }>`
   align-items: center;
   margin: auto 0 1.25rem;
   justify-content: ${(props) =>
-    props.$userType === "user" ? "flex-start" : "flex-end"};
+    props.$userType === "user" ? "flex-end" : "flex-start"};
 `;
 
 export const Bubble = styled.div`
