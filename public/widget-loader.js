@@ -6,7 +6,7 @@
 
   // Load React Widget as an iframe
   const iframe = document.createElement("iframe");
-  iframe.src = "https://chatbot-two-mu-42.vercel.app";
+  iframe.src = "https://chatbot-two-mu-42.vercel.app/widget-loader.js";
   iframe.width = "350";
   iframe.height = "500";
   iframe.style.border = "none";
