@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { MessageBubbleProps } from "../../atoms/MessageBubble/Message.types";
 import { ChatbotComponent } from "./Chatbot.styles";
 import {
@@ -10,6 +10,7 @@ import {
 import Loader from "../../atoms/Loader/Loader";
 import { sanitizeInput } from "../../../utils";
 import { usePageLoad, useScrollToBottom } from "../../../hooks";
+import Draggable from "react-draggable";
 
 const ChatBot: React.FC = () => {
   const [messages, setMessages] = useState<MessageBubbleProps[]>([]);
@@ -99,29 +100,33 @@ const ChatBot: React.FC = () => {
     }, 1200);
   };
 
+  const nodeRef = useRef(null); // Create a ref for the draggable element
+
   return (
     <>
       {!pageLoad ? (
         <Loader />
       ) : (
-        <ChatbotComponent>
-          <ChatbotHeader />
+        <Draggable nodeRef={nodeRef}>
+          <ChatbotComponent ref={nodeRef}>
+            <ChatbotHeader />
 
-          <ChatbotScreen
-            messages={messages}
-            isUserTyping={isUserTyping}
-            isBotTyping={isBotTyping}
-            scollToBottomRef={scollToBottomRef}
-          />
+            <ChatbotScreen
+              messages={messages}
+              isUserTyping={isUserTyping}
+              isBotTyping={isBotTyping}
+              scollToBottomRef={scollToBottomRef}
+            />
 
-          <ChatbotInput
-            input={input}
-            handleInputChange={handleInputChange}
-            handleSendMessage={handleSendMessage}
-            isUserTyping={isUserTyping}
-          />
-          <ChatbotFooter />
-        </ChatbotComponent>
+            <ChatbotInput
+              input={input}
+              handleInputChange={handleInputChange}
+              handleSendMessage={handleSendMessage}
+              isUserTyping={isUserTyping}
+            />
+            <ChatbotFooter />
+          </ChatbotComponent>
+        </Draggable>
       )}
     </>
   );
