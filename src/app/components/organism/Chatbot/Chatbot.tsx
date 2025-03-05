@@ -10,7 +10,10 @@ import {
 import Loader from "../../atoms/Loader/Loader";
 import { sanitizeInput } from "../../../utils";
 import { usePageLoad, useScrollToBottom } from "../../../hooks";
-import Draggable from "react-draggable";
+import Draggable, {
+  DraggableData,
+  DraggableEventHandler,
+} from "react-draggable";
 
 const ChatBot: React.FC = () => {
   const [messages, setMessages] = useState<MessageBubbleProps[]>([]);
@@ -20,6 +23,15 @@ const ChatBot: React.FC = () => {
   const [isUserTyping, setIsUserTyping] = useState<boolean>(false);
   const scollToBottomRef = useScrollToBottom(messages, input);
   const pageLoad = usePageLoad();
+  const [position, setPosition] = useState<{ x: number; y: number }>({
+    x: 0,
+    y: 0,
+  });
+
+  const handleDrag: DraggableEventHandler = (e, data: DraggableData) => {
+    // Update the position of the component while dragging
+    setPosition({ x: data.x, y: data.y });
+  };
 
   const quantity = 10;
   const locale = "en_US";
@@ -107,7 +119,14 @@ const ChatBot: React.FC = () => {
       {!pageLoad ? (
         <Loader />
       ) : (
-        <Draggable nodeRef={nodeRef}>
+        <Draggable
+          nodeRef={nodeRef}
+          axis="both" // Allow dragging in both x and y directions
+          handle=".handle" // Make the widget draggable only when clicked on the handle (optional)
+          position={position}
+          onDrag={handleDrag}
+          bounds="parent" // This ensures that the component stays inside its parent element (the browser window)
+        >
           <ChatbotComponent ref={nodeRef}>
             <ChatbotHeader />
 
