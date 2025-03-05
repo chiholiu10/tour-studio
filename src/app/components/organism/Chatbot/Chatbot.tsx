@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import { MessageBubbleProps } from "../../atoms/MessageBubble/Message.types";
-import { ChatbotComponent, ChatbotCoverBrowser } from "./Chatbot.styles";
+import { ChatbotComponent } from "./Chatbot.styles";
 import {
   ChatbotFooter,
   ChatbotHeader,
@@ -108,26 +108,24 @@ const ChatBot: React.FC = () => {
         <Loader />
       ) : (
         <Draggable nodeRef={nodeRef}>
-          <ChatbotCoverBrowser ref={nodeRef}>
-            <ChatbotComponent>
-              <ChatbotHeader />
+          <ChatbotComponent ref={nodeRef}>
+            <ChatbotHeader />
 
-              <ChatbotScreen
-                messages={messages}
-                isUserTyping={isUserTyping}
-                isBotTyping={isBotTyping}
-                scollToBottomRef={scollToBottomRef}
-              />
+            <ChatbotScreen
+              messages={messages}
+              isUserTyping={isUserTyping}
+              isBotTyping={isBotTyping}
+              scollToBottomRef={scollToBottomRef}
+            />
 
-              <ChatbotInput
-                input={input}
-                handleInputChange={handleInputChange}
-                handleSendMessage={handleSendMessage}
-                isUserTyping={isUserTyping}
-              />
-              <ChatbotFooter />
-            </ChatbotComponent>
-          </ChatbotCoverBrowser>
+            <ChatbotInput
+              input={input}
+              handleInputChange={handleInputChange}
+              handleSendMessage={handleSendMessage}
+              isUserTyping={isUserTyping}
+            />
+            <ChatbotFooter />
+          </ChatbotComponent>
         </Draggable>
       )}
     </>
