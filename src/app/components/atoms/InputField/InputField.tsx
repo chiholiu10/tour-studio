@@ -21,7 +21,7 @@ const InputField: React.FC<InputFieldProps> = ({
 
   const handleInputKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter") {
-      event.preventDefault(); // Prevents new line in case of textarea
+      event.preventDefault();
       handleSendMessage();
     }
   };

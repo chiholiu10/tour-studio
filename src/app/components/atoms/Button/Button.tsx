@@ -22,7 +22,7 @@ const Button: React.FC<ButtonProps> = ({
           alt={imageAlt}
           className={imageClassName}
           width={width}
-          height={height} // needed in NextJS Image
+          height={height}
         />
       )}
       {children}
