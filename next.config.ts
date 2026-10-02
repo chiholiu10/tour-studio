@@ -1,24 +1,23 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  outputFileTracingRoot: process.cwd(),
+  reactStrictMode: true,
+  poweredByHeader: false,
+  compiler: { styledComponents: true },
   async headers() {
     return [
       {
-        source: "/widget",
+        source: "/:path*",
         headers: [
-          {
-            key: "X-Frame-Options",
-            value: "ALLOWALL", // Allows embedding in iframes
-          },
-          {
-            key: "Content-Security-Policy",
-            value: "frame-ancestors *", // Allow embedding from any domain
-          },
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+          { key: "Content-Security-Policy", value: "frame-ancestors 'self'; object-src 'none'; base-uri 'self'" },
+          { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
         ],
       },
     ];
   },
-  reactStrictMode: false,
 };
 
 export default nextConfig;

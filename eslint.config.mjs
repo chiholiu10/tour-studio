@@ -10,10 +10,11 @@ const compat = new FlatCompat({
 });
 
 const eslintConfig = [
+  { ignores: [".next/**", "node_modules/**", "next-env.d.ts"] },
   ...compat.extends("next/core-web-vitals", "next/typescript"),
+  { files: ["tests/**/*.cjs"], rules: { "@typescript-eslint/no-require-imports": "off" } },
   {
     rules: {
-      "no-console": "warn",
       "@typescript-eslint/no-unused-vars": [
         "error",
         {
@@ -27,13 +28,8 @@ const eslintConfig = [
       "react/react-in-jsx-scope": "off",
       "import/no-anonymous-default-export": "off",
       "prefer-const": "error",
-      quotes: ["error", "double"],
-      semi: ["error", "always"],
-      indent: ["error", 2],
-      "react/jsx-indent": ["error", 2],
-      "no-console": ["warn", { allow: ["warn", "error"] }],
-      "react/jsx-indent-props": ["error", 2],
-      "max-len": ["error", { code: 120 }],
+      "no-console": "error",
+      "no-debugger": "error",
       "react/jsx-filename-extension": [1, { extensions: [".tsx"] }], // Allow JSX in .tsx files
       "react/jsx-props-no-spreading": "off", // Allow JSX prop spreading
     },
