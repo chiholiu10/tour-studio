@@ -1,10 +1,10 @@
-import { StudioSurface } from "@/features/tour-studio/studio.styles";
+import { TourStudioSurface } from "@/features/tour-studio/tour-studio.styles";
 import { CaseStudySurface } from "@/features/tour-studio/case-study.styles";
 import type { Metadata } from "next";
 import Link from "next/link";
 import Icon from "@/features/tour-studio/components/icon";
 import MvpStatus from "@/features/tour-studio/components/mvp-status";
-import { studioCapabilities } from "@/features/tour-studio/server/provider-config";
+import { tourStudioCapabilities } from "@/features/tour-studio/server/provider-config";
 
 export const dynamic = "force-dynamic";
 
@@ -12,7 +12,7 @@ export const metadata: Metadata = { title: "Tour Studio — Behind the build" };
 
 export default function CaseStudy() {
   return (
-    <StudioSurface className="tour-shell">
+    <TourStudioSurface className="tour-shell">
       <header className="tour-topbar">
         <Link className="tour-brand" href="/">
           <span className="tour-brandMark">
@@ -60,7 +60,7 @@ export default function CaseStudy() {
               The core example flow works. Live API adapters are implemented, but real-account validation is still
               outstanding. Expand the status below for each feature.
             </p>
-            <MvpStatus capabilities={studioCapabilities()} />
+            <MvpStatus capabilities={tourStudioCapabilities()} />
           </div>
         </section>
         <section className="tour-caseSection">
@@ -152,6 +152,6 @@ export default function CaseStudy() {
           </div>
         </section>
       </CaseStudySurface>
-    </StudioSurface>
+    </TourStudioSurface>
   );
 }

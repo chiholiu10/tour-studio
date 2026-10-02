@@ -1,4 +1,4 @@
-import { StudioCapabilities } from "../tour-model";
+import { TourStudioCapabilities } from "../tour-model";
 
 export function providerConfig() {
   return {
@@ -9,7 +9,7 @@ export function providerConfig() {
   };
 }
 
-export function studioCapabilities(): StudioCapabilities {
+export function tourStudioCapabilities(): TourStudioCapabilities {
   const config = providerConfig();
   const accessRequired = Boolean(process.env.STUDIO_ACCESS_TOKEN);
   return {

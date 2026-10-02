@@ -1,7 +1,7 @@
 import { MvpStatusSurface } from "./mvp-status.styles";
-import { StudioCapabilities } from "../tour-model";
+import { TourStudioCapabilities } from "../tour-model";
 
-export default function MvpStatus({ capabilities }: { capabilities: StudioCapabilities }) {
+export default function MvpStatus({ capabilities }: { capabilities: TourStudioCapabilities }) {
   return (
     <MvpStatusSurface className="tour-mvpStatus">
       <summary>

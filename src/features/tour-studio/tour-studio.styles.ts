@@ -3,7 +3,7 @@
 import styled from "styled-components";
 import { buttonStyles } from "@/shared/styles/primitives";
 
-export const StudioSurface = styled.div`
+export const TourStudioSurface = styled.div`
   & {
     min-height: 100dvh;
     background: var(--color-canvas);

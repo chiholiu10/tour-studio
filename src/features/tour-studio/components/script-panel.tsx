@@ -1,6 +1,6 @@
 import { ScriptPanelSurface } from "./script-panel.styles";
 import { Draft, estimatedSeconds, MAX_SCRIPT_LENGTH, wordCount } from "../tour-model";
-import { downloadText } from "../studio-client";
+import { downloadText } from "../tour-studio-client";
 import { exportName } from "../tour-model";
 import Icon from "./icon";
 

@@ -1,9 +1,9 @@
 "use client";
-import { StudioSurface } from "./studio.styles";
+import { TourStudioSurface } from "./tour-studio.styles";
 
 import Link from "next/link";
-import { StudioCapabilities } from "./tour-model";
-import { useStudio } from "./use-studio";
+import { TourStudioCapabilities } from "./tour-model";
+import { useTourStudio } from "./use-tour-studio";
 import BriefPanel from "./components/brief-panel";
 import ScriptPanel from "./components/script-panel";
 import AudioPanel from "./components/audio-panel";
@@ -11,11 +11,11 @@ import AccessDialog from "./components/access-dialog";
 import MvpStatus from "./components/mvp-status";
 import Icon from "./components/icon";
 
-export default function Studio({ capabilities }: { capabilities: StudioCapabilities }) {
-  const studio = useStudio(capabilities);
+export default function TourStudio({ capabilities }: { capabilities: TourStudioCapabilities }) {
+  const tourStudio = useTourStudio(capabilities);
   const live = capabilities.drafts || capabilities.speech;
   return (
-    <StudioSurface className="tour-shell">
+    <TourStudioSurface className="tour-shell">
       <a className="tour-skipLink" href="#workspace">
         Skip to workspace
       </a>
@@ -107,22 +107,22 @@ export default function Studio({ capabilities }: { capabilities: StudioCapabilit
           {live && (
             <div className="tour-connectionBar">
               <p>Live tools use provider credits when you generate.</p>
-              <button className="tour-textButton" type="button" onClick={() => studio.setShowUnlock(true)}>
-                {studio.token ? "Change access code" : "Enter access code"}
+              <button className="tour-textButton" type="button" onClick={() => tourStudio.setShowUnlock(true)}>
+                {tourStudio.token ? "Change access code" : "Enter access code"}
               </button>
             </div>
           )}
-          {studio.error && (
+          {tourStudio.error && (
             <div className="tour-error" role="alert" aria-label="Generation error">
               <div>
                 <strong>We couldn’t finish that.</strong>
-                <p>{studio.error.message}</p>
+                <p>{tourStudio.error.message}</p>
               </div>
               <button
                 type="button"
                 className="tour-secondaryButton"
-                disabled={Boolean(studio.busy)}
-                onClick={() => void studio.retry()}
+                disabled={Boolean(tourStudio.busy)}
+                onClick={() => void tourStudio.retry()}
               >
                 Try again
               </button>
@@ -130,47 +130,47 @@ export default function Studio({ capabilities }: { capabilities: StudioCapabilit
                 className="tour-iconButton"
                 type="button"
                 aria-label="Dismiss error"
-                onClick={() => studio.setError(null)}
+                onClick={() => tourStudio.setError(null)}
               >
                 <Icon name="close" />
               </button>
             </div>
           )}
-          {studio.busy && (
+          {tourStudio.busy && (
             <div className="tour-progress" role="status">
-              <span>{studio.busy === "draft" ? "Shaping your script…" : "Bringing your script to life…"}</span>
-              <button className="tour-textButton" type="button" onClick={studio.cancel}>
+              <span>{tourStudio.busy === "draft" ? "Shaping your script…" : "Bringing your script to life…"}</span>
+              <button className="tour-textButton" type="button" onClick={tourStudio.cancel}>
                 Cancel generation
               </button>
             </div>
           )}
-          <div className="tour-workbench" aria-busy={Boolean(studio.busy)}>
+          <div className="tour-workbench" aria-busy={Boolean(tourStudio.busy)}>
             <BriefPanel
-              brief={studio.brief}
-              onChange={studio.setBrief}
-              busy={Boolean(studio.busy)}
+              brief={tourStudio.brief}
+              onChange={tourStudio.setBrief}
+              busy={Boolean(tourStudio.busy)}
               live={capabilities.drafts}
-              onGenerate={() => void studio.generateDraft()}
+              onGenerate={() => void tourStudio.generateDraft()}
             />
             <div className="tour-outputColumn">
               <ScriptPanel
-                draft={studio.draft}
-                onChange={studio.updateScript}
-                busy={Boolean(studio.busy)}
-                versions={studio.versions}
-                onRestore={studio.restoreVersion}
+                draft={tourStudio.draft}
+                onChange={tourStudio.updateScript}
+                busy={Boolean(tourStudio.busy)}
+                versions={tourStudio.versions}
+                onRestore={tourStudio.restoreVersion}
               />
               <AudioPanel
                 connected={capabilities.speech}
-                busy={Boolean(studio.busy)}
-                generating={studio.busy === "speech"}
-                hasScript={Boolean(studio.draft.script.trim())}
-                onGenerate={() => void studio.generateSpeech()}
-                onPreview={studio.preview}
-                canPreview={studio.canPreview}
-                previewing={studio.previewing}
-                audio={studio.audio}
-                current={studio.audioIsCurrent}
+                busy={Boolean(tourStudio.busy)}
+                generating={tourStudio.busy === "speech"}
+                hasScript={Boolean(tourStudio.draft.script.trim())}
+                onGenerate={() => void tourStudio.generateSpeech()}
+                onPreview={tourStudio.preview}
+                canPreview={tourStudio.canPreview}
+                previewing={tourStudio.previewing}
+                audio={tourStudio.audio}
+                current={tourStudio.audioIsCurrent}
               />
             </div>
           </div>
@@ -181,11 +181,15 @@ export default function Studio({ capabilities }: { capabilities: StudioCapabilit
             </span>
           </footer>
           <p className="tour-srOnly" role="status" aria-live="polite">
-            {studio.announcement}
+            {tourStudio.announcement}
           </p>
         </main>
       </div>
-      <AccessDialog open={studio.showUnlock} onClose={() => studio.setShowUnlock(false)} onSave={studio.setToken} />
-    </StudioSurface>
+      <AccessDialog
+        open={tourStudio.showUnlock}
+        onClose={() => tourStudio.setShowUnlock(false)}
+        onSave={tourStudio.setToken}
+      />
+    </TourStudioSurface>
   );
 }

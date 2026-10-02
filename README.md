@@ -77,9 +77,9 @@ export work you want to retain.
 
 - `src/features/tour-studio/tour-model.ts`: shared types, runtime validators, character limits and timing estimates.
 - `src/features/tour-studio/example-drafts.ts`: transparent, deterministic no-cost examples.
-- `src/features/tour-studio/use-studio.ts`: workspace lifecycle, request cancellation, history and audio cleanup.
+- `src/features/tour-studio/use-tour-studio.ts`: workspace lifecycle, request cancellation, history and audio cleanup.
 - `src/features/tour-studio/components`: controlled panels for brief, script, audio and workspace access.
-- `src/features/tour-studio/studio-client.ts`: same-origin API transport and text download.
+- `src/features/tour-studio/tour-studio-client.ts`: same-origin API transport and text download.
 - `src/features/tour-studio/server`: provider adapters, configuration, access checks and request budgets.
 - `src/app/api/studio`: thin route handlers for draft and audio generation.
 - `src/app/case-study`: public explanation of scope, design choices and limitations.

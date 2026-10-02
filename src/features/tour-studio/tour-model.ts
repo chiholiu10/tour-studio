@@ -26,7 +26,7 @@ export interface Draft {
   source: "example" | "ai";
 }
 
-export interface StudioCapabilities {
+export interface TourStudioCapabilities {
   drafts: boolean;
   speech: boolean;
   accessRequired: boolean;

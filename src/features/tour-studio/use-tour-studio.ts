@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Brief, Draft, initialBrief, MAX_VERSIONS, StudioCapabilities } from "./tour-model";
+import { Brief, Draft, initialBrief, MAX_VERSIONS, TourStudioCapabilities } from "./tour-model";
 import { createExample } from "./example-drafts";
-import { requestDraft, requestSpeech } from "./studio-client";
+import { requestDraft, requestSpeech } from "./tour-studio-client";
 
 interface Version {
   id: number;
@@ -19,7 +19,7 @@ interface StudioError {
   message: string;
 }
 
-export function useStudio(capabilities: StudioCapabilities) {
+export function useTourStudio(capabilities: TourStudioCapabilities) {
   const [brief, setBrief] = useState<Brief>(initialBrief);
   const [draft, setDraft] = useState<Draft>(() => createExample(initialBrief));
   const [versions, setVersions] = useState<Version[]>([]);

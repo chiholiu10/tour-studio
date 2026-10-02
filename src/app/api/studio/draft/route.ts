@@ -1,6 +1,6 @@
 import { parseBrief } from "@/features/tour-studio/tour-model";
 import { createExample } from "@/features/tour-studio/example-drafts";
-import { providerConfig, studioCapabilities } from "@/features/tour-studio/server/provider-config";
+import { providerConfig, tourStudioCapabilities } from "@/features/tour-studio/server/provider-config";
 import {
   checkOrigin,
   failure,
@@ -25,7 +25,7 @@ export async function POST(request: Request) {
     } catch (error) {
       throw new HttpError(400, (error as Error).message);
     }
-    if (!studioCapabilities().drafts) return json(createExample(brief));
+    if (!tourStudioCapabilities().drafts) return json(createExample(brief));
     requireAccess(request, process.env.STUDIO_ACCESS_TOKEN);
     release = reserveGeneration();
     const signal = AbortSignal.any([request.signal, AbortSignal.timeout(45_000)]);

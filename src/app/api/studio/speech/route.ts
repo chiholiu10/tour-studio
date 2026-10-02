@@ -1,5 +1,5 @@
 import { MAX_SCRIPT_LENGTH } from "@/features/tour-studio/tour-model";
-import { providerConfig, studioCapabilities } from "@/features/tour-studio/server/provider-config";
+import { providerConfig, tourStudioCapabilities } from "@/features/tour-studio/server/provider-config";
 import {
   checkOrigin,
   failure,
@@ -17,7 +17,7 @@ export async function POST(request: Request) {
   try {
     checkOrigin(request);
     requireAccess(request, process.env.STUDIO_ACCESS_TOKEN);
-    if (!studioCapabilities().speech) throw new HttpError(503, "Voice generation is not connected yet.");
+    if (!tourStudioCapabilities().speech) throw new HttpError(503, "Voice generation is not connected yet.");
     const body = await readJson(request);
     if (typeof body.text !== "string" || !body.text.trim() || body.text.length > MAX_SCRIPT_LENGTH) {
       throw new HttpError(400, "The script must contain between 1 and 3,000 characters.");
