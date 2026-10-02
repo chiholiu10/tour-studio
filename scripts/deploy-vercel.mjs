@@ -28,7 +28,15 @@ export async function deployProduction({
       body: data ? JSON.stringify(data) : undefined,
       signal: AbortSignal.timeout(30_000),
     });
-    if (!response.ok) throw new Error(`Vercel deployment request failed (HTTP ${response.status}).`);
+    if (response.status === 409 && path.includes("/promote/")) {
+      const conflict = await response.json();
+      if (
+        conflict.error?.code === "conflict" &&
+        conflict.error?.message?.includes("already the current production deployment")
+      )
+        return {};
+    }
+    if (!response.ok) throw new Error(`Vercel deployment request failed at ${path} (HTTP ${response.status}).`);
     return response.json();
   };
   const requireCurrentHead = async () => {

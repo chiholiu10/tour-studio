@@ -102,3 +102,19 @@ test("an already-current production deployment still passes public verification 
   );
   assert.ok(mock.calls.some((call) => call.path === "/api/health"));
 });
+
+test("an already-current promotion conflict still requires public release verification", async () => {
+  const { deployProduction } = await import("../scripts/deploy-vercel.mjs");
+  const mock = provider();
+  const fetcher = (url, options) =>
+    new URL(url).pathname.includes("/promote/")
+      ? Promise.resolve(
+          Response.json(
+            { error: { code: "conflict", message: "already the current production deployment" } },
+            { status: 409 },
+          ),
+        )
+      : mock.fetcher(url, options);
+  await deployProduction({ env, fetcher });
+  assert.ok(mock.calls.some((call) => call.path === "/api/health"));
+});
