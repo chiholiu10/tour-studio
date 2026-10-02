@@ -1,15 +1,9 @@
-"use client";
-
-import { ThemeProvider } from "styled-components";
-import { CSSreset } from "./styles/CssReset";
-import theme from "./styles/Theme";
-import { Chatbot } from "./components/organism";
+import Chatbot from "@/features/chat/components/chatbot";
 
 export default function Home() {
   return (
-    <ThemeProvider theme={theme}>
-      <CSSreset />
+    <main>
       <Chatbot />
-    </ThemeProvider>
+    </main>
   );
 }

@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
+import Providers from "./providers";
 
 export const metadata: Metadata = {
-  title: "Chatbot",
-  description: "Chatbot 2025 released",
+  title: "Tour Studio — Give places a voice",
+  description: "A personal audio-tour MVP by Chiho Liu. Shape a script, edit your story and explore AI narration.",
 };
 
 export default function RootLayout({
@@ -12,7 +13,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }
