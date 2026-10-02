@@ -116,8 +116,11 @@ flows, editing/history, export, failure/retry, cancellation, keyboard navigation
 layout overflow and case-study navigation. It starts an unconfigured local server
 on port 3100 or reuses a running server there; run it against example mode.
 
-CI installs dependencies from the lockfile, runs checks/build and browser tests,
-and uploads failure artifacts. The test suite does not establish live provider
+CI runs separate quality, dependency-audit, production-build and browser jobs.
+The required CI gate blocks merging when any check fails. Production deployment
+stages the exact tested main commit, promotes it after a successful Vercel build,
+checks the public release and pages, and requests rollback if verification fails.
+See [CI/CD operations](docs/ci-cd.md) for protection, credentials and recovery. The test suite does not establish live provider
 quality, pronunciation, real account permissions, cross-browser speech support or
 production scale. A real ElevenLabs-account synthesis test is still required.
 
@@ -149,3 +152,6 @@ embedding the legacy chat requires an explicit origin allowlist and a real route
 - [ElevenLabs application question](docs/elevenlabs-application-answer.md)
 - [OpenAI structured output contract](https://developers.openai.com/api/docs/guides/structured-outputs)
 - [ElevenLabs text-to-speech contract](https://elevenlabs.io/docs/api-reference/text-to-speech/convert)
+
+Install local before-push quality checks with `npm run setup:hooks`. Hooks are local
+and bypassable; GitHub branch protection is the enforceable merge boundary.
