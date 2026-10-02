@@ -68,7 +68,10 @@ export async function deployProduction({
   if (!ready) throw new Error("The staged Vercel build timed out.");
   await requireCurrentHead();
   try {
-    await request(`/v10/projects/${project}/promote/${encodeURIComponent(deployment.id)}`, "POST", {});
+    const current = await request(`/v9/projects/${project}`);
+    if (current.targets?.production?.id !== deployment.id) {
+      await request(`/v10/projects/${project}/promote/${encodeURIComponent(deployment.id)}`, "POST", {});
+    }
     let healthy = false;
     for (let attempt = 0; attempt < 24; attempt += 1) {
       try {
