@@ -6,7 +6,8 @@ export default defineConfig({
   forbidOnly: Boolean(process.env.CI),
   retries: process.env.CI ? 1 : 0,
   workers: 2,
-  reporter: "list",
+  failOnFlakyTests: Boolean(process.env.CI),
+  reporter: [["list"], ["html", { open: "never" }]],
   use: {
     baseURL: "http://127.0.0.1:3100",
     trace: "retain-on-failure",
@@ -20,7 +21,10 @@ export default defineConfig({
     { name: "mobile", use: { viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true } },
   ],
   webServer: {
-    command: "npm run dev -- --hostname 127.0.0.1 --port 3100",
+    command:
+      process.env.E2E_SERVER_MODE === "production"
+        ? "npm run start -- --hostname 127.0.0.1 --port 3100"
+        : "npm run dev -- --hostname 127.0.0.1 --port 3100",
     url: "http://127.0.0.1:3100",
     reuseExistingServer: !process.env.CI,
     timeout: 60_000,
