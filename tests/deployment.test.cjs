@@ -88,7 +88,7 @@ test("deployment stages the exact tested SHA and promotes only after a successfu
 test("a failed public release check requests rollback instead of reporting success", async () => {
   const { deployProduction } = await import("../scripts/deploy-vercel.mjs");
   const mock = provider({ healthy: false });
-  await assert.rejects(deployProduction({ env, ...mock, pause: async () => {} }), /rollback/);
+  await assert.rejects(deployProduction({ env, ...mock, pause: async () => {} }), /rollback/i);
   assert.ok(mock.calls.some((call) => call.path === "/v1/projects/mock-project/rollback/previous"));
 });
 

@@ -106,9 +106,13 @@ export async function deployProduction({
       if (!response.ok || !(await response.text()).includes(marker))
         throw new Error("A production page smoke check failed.");
     }
-  } catch {
-    await request(`/v1/projects/${project}/rollback/${encodeURIComponent(previous)}`, "POST", {});
-    throw new Error("Production verification failed; rollback to the previous deployment was requested.");
+  } catch (error) {
+    try {
+      await request(`/v1/projects/${project}/rollback/${encodeURIComponent(previous)}`, "POST", {});
+    } catch (rollbackError) {
+      throw new Error(`${error.message} Rollback request also failed: ${rollbackError.message}`);
+    }
+    throw new Error(`${error.message} Rollback to the previous deployment was requested.`);
   }
   return { id: deployment.id, url: production, sha: env.GITHUB_SHA };
 }
