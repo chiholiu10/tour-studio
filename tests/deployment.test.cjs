@@ -12,7 +12,7 @@ const env = {
 };
 const json = (value) => Response.json(value);
 
-function provider({ head = sha, deployedSha = sha, healthy = true } = {}) {
+function provider({ head = sha, deployedSha = sha, healthy = true, alreadyProduction = false } = {}) {
   const calls = [];
   const fetcher = async (url, options = {}) => {
     const parsed = new URL(url);
@@ -25,7 +25,14 @@ function provider({ head = sha, deployedSha = sha, healthy = true } = {}) {
     if (parsed.pathname === "/v9/projects/mock-project") {
       return json({
         autoAssignCustomDomains: false,
-        targets: { production: { id: "previous" } },
+        targets: {
+          production: {
+            id:
+              alreadyProduction && calls.some((call) => call.path === "/v13/deployments/staged")
+                ? "staged"
+                : "previous",
+          },
+        },
         link: { repoId: 123 },
       });
     }
@@ -83,4 +90,15 @@ test("a failed public release check requests rollback instead of reporting succe
   const mock = provider({ healthy: false });
   await assert.rejects(deployProduction({ env, ...mock, pause: async () => {} }), /rollback/);
   assert.ok(mock.calls.some((call) => call.path === "/v1/projects/mock-project/rollback/previous"));
+});
+
+test("an already-current production deployment still passes public verification without promoting twice", async () => {
+  const { deployProduction } = await import("../scripts/deploy-vercel.mjs");
+  const mock = provider({ alreadyProduction: true });
+  await deployProduction({ env, ...mock });
+  assert.equal(
+    mock.calls.some((call) => call.path.includes("/promote/")),
+    false,
+  );
+  assert.ok(mock.calls.some((call) => call.path === "/api/health"));
 });
