@@ -1,9 +1,9 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { appendMessage, demoReply, Message, normalizeMessage, REPLY_DELAY_MS, ReplyProvider } from "./chat-model";
+import { appendMessage, demoReply, Message, normalizeMessage, REPLY_DELAY_MS, ReplyProvider } from "./assistant-model";
 
-export function useChat(replyProvider: ReplyProvider = demoReply) {
+export function useAssistant(replyProvider: ReplyProvider = demoReply) {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [isBotTyping, setIsBotTyping] = useState(false);

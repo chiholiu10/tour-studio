@@ -5,7 +5,7 @@ an editable walking-tour script, listen to a preview, and optionally produce an
 ElevenLabs MP3. Built with Next.js App Router, React and TypeScript.
 
 The workspace lives at `/`, the case study at `/case-study`, and the original
-refactored chatbot remains at `/chat`.
+refactored assistant remains at `/assistant`.
 
 ## Run locally
 
@@ -83,7 +83,7 @@ export work you want to retain.
 - `src/features/tour-studio/server`: provider adapters, configuration, access checks and request budgets.
 - `src/app/api/studio`: thin route handlers for draft and audio generation.
 - `src/app/case-study`: public explanation of scope, design choices and limitations.
-- `src/features/chat`: chatbot state, domain logic and chat-specific components.
+- `src/features/assistant`: assistant state, domain logic and chat-specific components.
 - `src/shared`: reusable controls, scrolling hook and shared styles.
 
 File and folder names use kebab-case; React components retain PascalCase names and
@@ -92,7 +92,7 @@ hooks retain their `use` prefix in code. Next.js keeps its required `page.tsx`,
 shared controls, hooks and styles live in `src/shared`. Test infrastructure lives in
 `tests/helpers`, with browser scenarios in `tests/e2e`.
 
-The studio and chatbot use styled-components and system fonts. A shared ThemeProvider
+The studio and assistant use styled-components and system fonts. A shared ThemeProvider
 and server style registry apply the design-system defaults. Semantic tokens live in
 `src/shared/styles/tokens.ts`; `css-reset.ts` exposes inherited CSS variables and base
 styles. Each panel owns its scoped styles, and both features inherit the same

@@ -1,6 +1,6 @@
 # Shared design system
 
-Both Tour Studio and the chatbot use styled-components. `ThemeProvider` supplies
+Both Tour Studio and the assistant use styled-components. `ThemeProvider` supplies
 `src/shared/styles/theme.ts`, and the existing server style registry renders the
 initial styles without waiting for client hydration.
 

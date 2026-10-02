@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { Message } from "@/features/chat/chat-model";
+import { Message } from "@/features/assistant/assistant-model";
 
 export default function useScrollToBottom(messages: Message[], isBotTyping: boolean) {
   const endRef = useRef<HTMLDivElement>(null);

@@ -1,22 +1,22 @@
 import React from "react";
-import { ChatbotHeaderButtonGroup, ChatbotHeaderComponent } from "./chatbot-header.styles";
+import { AssistantHeaderButtonGroup, AssistantHeaderComponent } from "./assistant-header.styles";
 import Image from "next/image";
 import Button from "../../../shared/components/button";
 
-const ChatbotHeader: React.FC = () => (
-  <ChatbotHeaderComponent className="handle">
+const AssistantHeader: React.FC = () => (
+  <AssistantHeaderComponent className="handle">
     <Image
-      className="chatbot-logo"
+      className="assistant-logo"
       src="/images/tour-and-tickets-logo.png"
       alt="Tours and Tickets"
       width={176}
       height={26}
     />
-    <ChatbotHeaderButtonGroup>
+    <AssistantHeaderButtonGroup>
       <Button
         disabled
         title="Unavailable in this demo"
-        className="chatbot-header-button"
+        className="assistant-header-button"
         imageSrc="/images/cart.png"
         imageAlt="cart-icon"
         imageClassName="cart-icon"
@@ -26,15 +26,15 @@ const ChatbotHeader: React.FC = () => (
       <Button
         disabled
         title="Unavailable in this demo"
-        className="chatbot-header-button"
+        className="assistant-header-button"
         imageSrc="/images/close.png"
         imageAlt="close-icon"
         imageClassName="close-icon"
         width={13}
         height={13}
       />
-    </ChatbotHeaderButtonGroup>
-  </ChatbotHeaderComponent>
+    </AssistantHeaderButtonGroup>
+  </AssistantHeaderComponent>
 );
 
-export default ChatbotHeader;
+export default AssistantHeader;

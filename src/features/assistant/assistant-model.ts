@@ -21,4 +21,4 @@ export function appendMessage(messages: Message[], message: Message): Message[] 
 // This is a local demo. A production provider must validate its response and
 // keep credentials, authorization and rate limiting on the server.
 export const demoReply: ReplyProvider = async () =>
-  "Thanks for your message! This is a demo chatbot. For bookings, please visit Tours & Tickets.";
+  "Thanks for your message! This is a demo assistant. For bookings, please visit Tours & Tickets.";

@@ -98,7 +98,8 @@ export default function CaseStudy() {
             </p>
             <p>
               The initial draft and browser preview work without paid providers. Drafts and audio remain in the current
-              browser session; export is explicit. The original chatbot is preserved at <Link href="/chat">/chat</Link>.
+              browser session; export is explicit. The original assistant is preserved at{" "}
+              <Link href="/assistant">/chat</Link>.
             </p>
           </div>
         </section>

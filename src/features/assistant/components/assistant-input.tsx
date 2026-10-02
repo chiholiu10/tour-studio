@@ -1,18 +1,18 @@
-import { MAX_MESSAGE_LENGTH } from "@/features/chat/chat-model";
-import { ChatbotInputComponent } from "./chatbot-input.styles";
+import { MAX_MESSAGE_LENGTH } from "@/features/assistant/assistant-model";
+import { AssistantInputComponent } from "./assistant-input.styles";
 import Button from "../../../shared/components/button";
 import InputField from "../../../shared/components/input-field";
 
-interface ChatbotInputProps {
+interface AssistantInputProps {
   input: string;
   onInputChange: (value: string) => void;
   onSend: () => void;
   isBusy: boolean;
 }
 
-export default function ChatbotInput({ input, onInputChange, onSend, isBusy }: ChatbotInputProps) {
+export default function AssistantInput({ input, onInputChange, onSend, isBusy }: AssistantInputProps) {
   return (
-    <ChatbotInputComponent
+    <AssistantInputComponent
       as="form"
       onSubmit={(event) => {
         event.preventDefault();
@@ -23,7 +23,7 @@ export default function ChatbotInput({ input, onInputChange, onSend, isBusy }: C
         value={input}
         onChange={onInputChange}
         placeholder="Type and press [enter]"
-        className="chatbot-input-field"
+        className="assistant-input-field"
         maxLength={MAX_MESSAGE_LENGTH}
       />
       <Button
@@ -36,6 +36,6 @@ export default function ChatbotInput({ input, onInputChange, onSend, isBusy }: C
         width={15}
         height={15}
       />
-    </ChatbotInputComponent>
+    </AssistantInputComponent>
   );
 }

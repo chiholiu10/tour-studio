@@ -7,7 +7,7 @@ const {
   MAX_MESSAGE_LENGTH,
   MAX_MESSAGES,
   demoReply,
-} = require("../src/features/chat/chat-model.ts");
+} = require("../src/features/assistant/assistant-model.ts");
 
 test("blank messages are rejected and surrounding whitespace is removed", () => {
   assert.equal(normalizeMessage(" \n\t "), "");
@@ -39,7 +39,7 @@ const React = require("react");
 const { renderToStaticMarkup } = require("react-dom/server");
 const Button = require("../src/shared/components/button.tsx").default;
 const InputField = require("../src/shared/components/input-field.tsx").default;
-const MessageBubble = require("../src/features/chat/components/message-bubble.tsx").default;
+const MessageBubble = require("../src/features/assistant/components/message-bubble.tsx").default;
 
 test("generic buttons honor disabled and default to a non-submitting type", () => {
   const html = renderToStaticMarkup(React.createElement(Button, { disabled: true }, "Send"));

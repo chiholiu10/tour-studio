@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ChatbotComponent = styled.div`
+export const AssistantComponent = styled.div`
   border: var(--border-width) solid var(--color-border);
   border-radius: var(--radius-panel);
   width: min(var(--chat-width), 100%);

@@ -35,7 +35,7 @@ preview are cleaned up when replaced or unmounted.
 
 The studio adds no runtime design or animation libraries. A shared styled-components design system and system
 fonts keep the design easy to transfer. The legacy widget stays available at
-`/chat`, with its existing styled-components implementation.
+`/assistant`, with its existing styled-components implementation.
 
 ## ElevenLabs integration
 

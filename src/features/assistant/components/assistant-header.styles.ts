@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ChatbotHeaderComponent = styled.div`
+export const AssistantHeaderComponent = styled.div`
   padding: var(--space-4);
   background-color: var(--color-chat-brand);
   display: flex;
@@ -9,7 +9,7 @@ export const ChatbotHeaderComponent = styled.div`
   align-items: center;
   justify-content: space-around;
 
-  .chatbot-header-button {
+  .assistant-header-button {
     border-radius: var(--radius-pill);
     background-color: var(--color-chat-brand-overlay);
     width: var(--control-height);
@@ -26,7 +26,7 @@ export const ChatbotHeaderComponent = styled.div`
   }
 `;
 
-export const ChatbotHeaderButtonGroup = styled.div`
+export const AssistantHeaderButtonGroup = styled.div`
   width: 5rem;
   display: flex;
   flex-direction: row;

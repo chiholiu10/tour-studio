@@ -2,7 +2,7 @@ import React from "react";
 import { Bubble, TypingIndicatorComponent } from "./typing-indicator.styles";
 
 interface TypingIndicatorProps {
-  userType: "user" | "chatbot";
+  userType: "user" | "assistant";
 }
 
 const TypingIndicator: React.FC<TypingIndicatorProps> = ({ userType }) => (

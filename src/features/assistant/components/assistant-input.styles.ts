@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
-export const ChatbotInputComponent = styled.div`
+export const AssistantInputComponent = styled.div`
   display: flex;
   padding: var(--space-2);
   border-top: var(--border-width) solid var(--color-border);
 
-  .chatbot-input-field {
+  .assistant-input-field {
     border: none;
     flex: 1;
     min-width: 0;

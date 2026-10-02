@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
-export const ChatbotFooterComponent = styled.div`
+export const AssistantFooterComponent = styled.div`
   border-top: var(--border-width) solid var(--color-border);
   display: flex;
   min-height: var(--control-height);
   flex-direction: row;
 
-  .chatbot-footer-button {
+  .assistant-footer-button {
     font-size: var(--text-label);
     padding: var(--space-2);
     flex: 1;
@@ -15,17 +15,17 @@ export const ChatbotFooterComponent = styled.div`
     justify-content: center;
     font-weight: 500;
 
-    &.chatbot-book-button {
+    &.assistant-book-button {
       background-color: var(--color-chat-message);
       font-weight: var(--weight-semibold);
     }
 
-    &.chatbot-need-help {
+    &.assistant-need-help {
       color: var(--color-text-muted);
     }
   }
 
-  .chatbot-avatar-button {
+  .assistant-avatar-button {
     width: 3.1var (--chat-width);
     display: flex;
     justify-content: center;
