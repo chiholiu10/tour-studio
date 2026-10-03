@@ -118,3 +118,18 @@ test("an already-current promotion conflict still requires public release verifi
   await deployProduction({ env, fetcher });
   assert.ok(mock.calls.some((call) => call.path === "/api/health"));
 });
+
+test("successful promotion with an empty response does not trigger rollback", async () => {
+  const { deployProduction } = await import("../scripts/deploy-vercel.mjs");
+  const mock = provider();
+  const fetcher = (url, options) =>
+    new URL(url).pathname.includes("/promote/")
+      ? Promise.resolve(new Response(null, { status: 204 }))
+      : mock.fetcher(url, options);
+  await deployProduction({ env, fetcher });
+  assert.ok(mock.calls.some((call) => call.path === "/api/health"));
+  assert.equal(
+    mock.calls.some((call) => call.path.includes("/rollback/")),
+    false,
+  );
+});
