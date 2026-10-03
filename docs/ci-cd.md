@@ -50,3 +50,13 @@ A main workflow may be rerun; it refuses deployment if main has advanced.
 
 The project remains a portfolio MVP. CI/CD does not add enterprise authentication,
 persistence, distributed quotas or live ElevenLabs validation.
+
+## Dependency compatibility
+
+Dependabot groups compatible minor and patch lint-tooling updates. ESLint and
+`@eslint/js` stay on major 9 while the React lint plugin does not support major 10.
+`eslint-config-next` stays on the Next.js framework's major version; upgrading
+its major requires a coordinated framework migration. Node type definitions
+track the deployed Node 22 runtime rather than the newest Node release.
+These major-update exclusions do not disable security updates or the dependency
+audit. Revisit the constraints when upgrading the framework, runtime or plugins.
