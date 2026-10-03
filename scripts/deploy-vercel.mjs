@@ -37,7 +37,8 @@ export async function deployProduction({
         return {};
     }
     if (!response.ok) throw new Error(`Vercel deployment request failed at ${path} (HTTP ${response.status}).`);
-    return response.json();
+    const body = await response.text();
+    return body ? JSON.parse(body) : {};
   };
   const requireCurrentHead = async () => {
     const response = await fetcher(`https://api.github.com/repos/${env.GITHUB_REPOSITORY}/git/ref/heads/main`, {
