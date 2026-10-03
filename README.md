@@ -155,3 +155,13 @@ embedding the legacy chat requires an explicit origin allowlist and a real route
 
 Install local before-push quality checks with `npm run setup:hooks`. Hooks are local
 and bypassable; GitHub branch protection is the enforceable merge boundary.
+
+## GitHub agent
+
+The repository includes **Tour Studio Maintainer** in
+[the agent profile](.github/agents/tour-studio-maintainer.agent.md).
+On the [Agents page](https://github.com/chiholiu10/tour-studio/agents), choose it in
+the custom-agent selector and describe a concrete task, for example:
+“Fix the reported mobile layout issue, add a regression test and open a pull request.”
+Agent sessions require Copilot cloud-agent access on your GitHub account. The
+profile supplies project conventions; it does not start a session automatically.
